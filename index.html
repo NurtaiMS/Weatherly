@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weatherly | Современный прогноз погоды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="weather-app">
+        <!-- Основная панель -->
+        <div class="main-panel">
+            <div class="card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        🌤️
+                    </div>
+                    <div class="app-title">
+                        <h1>Weatherly</h1>
+                        <p class="app-subtitle">Современный прогноз погоды в реальном времени</p>
+                    </div>
+                </div>
+                
+                <div class="search-container">
+                    <div class="search-input-container">
+                        <input type="text" class="search-input" id="cityInput" placeholder="Введите город...">
+                        <div class="autocomplete-list" id="autocompleteList"></div>
+                    </div>
+                    <button class="btn btn-primary" id="searchBtn">
+                        <i class="fas fa-search"></i> Поиск
+                    </button>
+                    <button class="btn btn-secondary" id="locationBtn">
+                        <i class="fas fa-location-arrow"></i> Моё местоположение
+                    </button>
+                </div>
+                
+                <div class="unit-toggle">
+                    <div class="unit-btn active" data-unit="celsius">°C</div>
+                    <div class="unit-btn" data-unit="fahrenheit">°F</div>
+                </div>
+                
+                <div class="status info" id="statusMessage">
+                    <i class="fas fa-info-circle"></i> Введите название города (по умолчанию — Бишкек)
+                </div>
+            </div>
+            
+            <!-- Блок с текущей погодой -->
+            <div class="card">
+                <div class="current-weather">
+                    <div class="weather-icon" id="weatherIcon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="weather-info">
+                        <div class="temperature" id="temperature">--°C</div>
+                        <div class="weather-description" id="weatherDescription">--</div>
+                        <div class="weather-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="location">--</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="updateTime">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Горизонтальный прогноз на 7 дней -->
+            <div class="card forecast-card">
+                <div class="forecast-header">
+                    <h2>Прогноз на 7 дней</h2>
+                    <div class="forecast-nav">
+                        <button class="nav-btn prev-btn" id="prevForecast">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-btn next-btn" id="nextForecast">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="forecast-container" id="forecastContainer">
+                    <!-- Прогноз будет добавляться динамически -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Боковая панель с деталями погоды -->
+        <div class="side-panel">
+            <div class="card">
+                <h2>Детали погоды</h2>
+                <div class="weather-details">
+                    <div class="detail-card">
+                        <div class="detail-label">
+                            <i class="fas fa-temperature-low"></i>
+                            Ощущается как
+                        </div>
+                        <div class="detail-value" id="feelsLike">--°C</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-label">
+                            <i class="fas fa-tint"></i>
+                            Влажность
+                        </div>
+                        <div class="detail-value" id="humidity">--%</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-label">
+                            <i class="fas fa-wind"></i>
+                            Ветер
+                        </div>
+                        <div class="detail-value" id="windSpeed">-- м/с</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-label">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Давление
+                        </div>
+                        <div class="detail-value" id="pressure">-- hPa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Футер с информацией об API -->
+    <div class="api-footer">
+        <a href="https://open-meteo.com/" target="_blank" class="api-info">
+            <i class="fas fa-code"></i>
+            <span>Данные о погоде предоставлены Open-Meteo API</span>
+            <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
