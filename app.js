@@ -319,17 +319,19 @@ function updateWeatherUI(data) {
     updateForecast(daily);
 }
 
-// Функция для обновления прогноза
+// Функция для обновления прогноза (без навигации)
 function updateForecast(daily) {
     forecastContainer.innerHTML = '';
     
     const daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+    const today = new Date();
     
     for (let i = 0; i < 7; i++) {
-        const day = new Date();
-        day.setDate(day.getDate() + i);
+        const date = new Date(today);
+        date.setDate(today.getDate() + i);
         
-        const dayName = i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : daysOfWeek[day.getDay()];
+        const dayName = i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : daysOfWeek[date.getDay()];
+        const dateStr = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}`;
         
         const maxTemp = currentUnit === 'celsius' 
             ? Math.round(daily.temperature_2m_max[i]) 
@@ -340,21 +342,16 @@ function updateForecast(daily) {
             : Math.round(daily.temperature_2m_min[i] * 9/5 + 32);
         
         const forecastDay = document.createElement('div');
-        forecastDay.className = 'forecast-day fade-in';
-        forecastDay.style.animationDelay = `${i * 0.1}s`;
+        forecastDay.className = `forecast-day ${i === 0 ? 'current' : ''}`;
         forecastDay.innerHTML = `
-            <div class="forecast-icon">${getWeatherIcon(daily.weathercode[i])}</div>
+            <div class="forecast-date">${dateStr}</div>
             <div class="forecast-day-name">${dayName}</div>
-            <div class="forecast-temps">
-                <div class="temp-high">
-                    <div class="temp-label">Утро</div>
-                    <div class="temp-value">${maxTemp}°</div>
-                </div>
-                <div class="temp-low">
-                    <div class="temp-label">Ночь</div>
-                    <div class="temp-value">${minTemp}°</div>
-                </div>
+            <div class="forecast-icon">${getWeatherIcon(daily.weathercode[i])}</div>
+            <div class="forecast-temp">
+                <div class="temp-high">${maxTemp}°</div>
+                <div class="temp-low">${minTemp}°</div>
             </div>
+            <div class="forecast-description">${getWeatherDescription(daily.weathercode[i])}</div>
         `;
         
         forecastContainer.appendChild(forecastDay);
@@ -413,6 +410,7 @@ document.addEventListener('click', (e) => {
 });
 
 // Бишкек по умолчанию
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     getWeatherByCity('Бишкек');
 });
+
