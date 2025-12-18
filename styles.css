@@ -648,304 +648,181 @@ h2 {
     to { transform: rotate(360deg); }
 }
 
-/* Адаптивность */
-@media (max-width: 1100px) {
-    .weather-app {
-        grid-template-columns: 1fr;
-        max-width: 800px;
-        overflow-y: auto;
-        height: auto;
-        max-height: 100vh;
-    }
-    
-    body {
-        overflow-y: auto;
-    }
-    
-    .api-footer {
-        position: relative;
-        bottom: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-}
+/* ============= АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ============= */
 
+/* Телефоны (до 768px) - основной медиа-запрос */
 @media (max-width: 768px) {
-    body {
-        padding: 12px;
-    }
-    
-    .card {
-        padding: 20px;
-    }
-    
-    .current-weather {
-        flex-direction: column;
-        text-align: center;
-        gap: 16px;
-    }
-    
-    .weather-meta {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-    
-    .weather-details {
-        grid-template-columns: 1fr;
-    }
-    
-    .search-container {
-        flex-direction: column;
-    }
-    
-    .temperature {
-        font-size: 48px;
-    }
-    
-    .weather-icon {
-        font-size: 60px;
-    }
-    
-    .forecast-day {
-        min-width: 110px;
-    }
-    
-    .api-info {
-        font-size: 12px;
-        padding: 8px 16px;
-    }
-    
-    .api-info span {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .forecast-day {
-        min-width: 95px;
-        padding: 12px;
-        gap: 8px;
-    }
-    
-    .forecast-icon {
-        font-size: 24px;
-        height: 35px;
-    }
-    
-    .temp-high {
-        font-size: 16px;
-    }
-    
-    .temp-low {
-        font-size: 13px;
-    }
-    
-    .app-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .app-icon {
-        margin: 0 auto;
-    }
-    
-    .temperature {
-        font-size: 42px;
-    }
-}
-@media (max-width: 768px) {
+    /* Общие стили для мобильных */
     html, body {
         height: auto;
-        overflow-y: auto;
-    }
-
-    body {
-        max-height: none;
-        overflow-y: auto;
-        align-items: flex-start;
-    }
-}
-@media (max-width: 768px) {
-    .weather-app {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .side-panel {
-        order: 2;
-    }
-
-    .main-panel {
-        order: 1;
-    }
-}
-@media (max-width: 768px) {
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-@media (max-width: 480px) {
-    .search-input {
-        font-size: 14px;
-        padding: 12px 14px;
-    }
-
-    .btn {
-        padding: 12px;
-        font-size: 14px;
-    }
-}
-@media (max-width: 480px) {
-    .temperature {
-        font-size: 38px;
-    }
-
-    .weather-icon {
-        font-size: 52px;
-    }
-}
-.forecast-container {
-    -webkit-overflow-scrolling: touch;
-}
-@media (max-width: 768px) {
-    .api-footer {
-        position: static;
-        margin: 16px 0 0;
-    }
-}
-/* ============= АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ============= */
-
-/* Планшеты и мобильные (до 1024px) */
-@media (max-width: 1024px) {
-    .weather-app {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 10px;
-        overflow-y: auto;
-        max-height: none;
-    }
-    
-    body {
-        padding: 10px;
-        align-items: flex-start;
-        overflow-y: auto;
-    }
-    
-    .card {
-        padding: 20px;
-    }
-}
-
-/* Мобильные устройства (до 768px) */
-@media (max-width: 768px) {
-    html, body {
-        overflow-y: auto;
-        height: auto;
-    }
-    
-    body {
-        padding: 8px;
         min-height: 100vh;
         overflow-y: auto;
+        overflow-x: hidden;
     }
     
+    body {
+        padding: 0;
+        display: block;
+        align-items: stretch;
+        max-height: none;
+        overflow: visible;
+        background-attachment: fixed;
+    }
+    
+    /* Контейнер приложения */
     .weather-app {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
         width: 100%;
         max-width: 100%;
-        padding: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+        grid-template-columns: 1fr;
+        overflow: visible;
     }
     
-    /* Карточки - уменьшаем отступы */
+    /* Карточки - компактнее */
     .card {
-        padding: 18px;
+        padding: 16px;
         border-radius: 14px;
         margin-bottom: 0;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card:hover {
+        transform: none;
     }
     
     /* Заголовок приложения */
     .app-title h1 {
-        font-size: 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .app-title h1 i {
         font-size: 22px;
         margin-bottom: 4px;
-    }
-    
-    .app-subtitle {
-        font-size: 13px;
-    }
-    
-    /* Поиск - вертикальное расположение */
-    .search-container {
-        flex-direction: column;
+        display: flex;
+        align-items: center;
         gap: 10px;
     }
     
+    .app-title h1 i {
+        font-size: 20px;
+    }
+    
+    .app-subtitle {
+        font-size: 12px;
+        margin-bottom: 16px;
+        line-height: 1.4;
+    }
+    
+    /* Поисковая строка - вертикальный стек */
+    .search-container {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    
     .search-input-container {
-        min-width: 100%;
+        width: 100%;
+        min-width: 0;
     }
     
     .search-input {
         padding: 14px 16px;
         font-size: 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        width: 100%;
+        -webkit-appearance: none;
     }
     
     /* Кнопки - на всю ширину */
     .btn {
         width: 100%;
-        justify-content: center;
         padding: 15px;
         font-size: 15px;
+        border-radius: 12px;
+        justify-content: center;
+        margin: 0;
+        min-height: 48px;
     }
     
-    /* Текущая погода - вертикальное расположение */
+    /* Переключатель единиц */
+    .unit-toggle {
+        margin-top: 12px;
+        justify-content: center;
+    }
+    
+    .unit-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 20px;
+        min-height: 36px;
+    }
+    
+    /* Статус сообщения */
+    .status {
+        padding: 12px;
+        font-size: 13px;
+        margin-top: 12px;
+        border-radius: 10px;
+    }
+    
+    /* Текущая погода - вертикальная компоновка */
     .current-weather {
         flex-direction: column;
         text-align: center;
-        gap: 16px;
-        padding: 10px 0;
+        gap: 12px;
+        padding: 8px 0 16px;
     }
     
     .weather-icon {
-        font-size: 60px;
+        font-size: 56px;
         min-width: auto;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .weather-info {
+        width: 100%;
     }
     
     .temperature {
-        font-size: 48px;
+        font-size: 44px;
         margin-bottom: 4px;
+        line-height: 1;
+        letter-spacing: -1.5px;
     }
     
     .weather-description {
         font-size: 16px;
         margin-bottom: 12px;
+        color: var(--text-secondary);
     }
     
-    /* Мета-информация - вертикальное расположение */
     .weather-meta {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
+        margin-top: 8px;
     }
     
     .meta-item {
+        font-size: 13px;
+        color: var(--text-muted);
+        gap: 6px;
+        width: 100%;
         justify-content: center;
     }
     
     /* Прогноз на 7 дней */
     .forecast-card {
         padding: 16px;
+        overflow: visible;
+        min-height: auto;
     }
     
     .forecast-header {
@@ -954,26 +831,40 @@ h2 {
     
     .forecast-header h2 {
         font-size: 18px;
+        margin-bottom: 0;
     }
     
     .forecast-container {
-        gap: 10px;
-        padding: 5px 3px 15px;
+        gap: 8px;
+        padding: 8px 2px 16px 2px;
+        margin: 0 -4px;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .forecast-container::-webkit-scrollbar {
+        display: none;
     }
     
     .forecast-day {
-        min-width: 110px;
-        padding: 14px 10px;
-        gap: 10px;
+        min-width: 100px;
+        padding: 12px 8px;
+        gap: 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        flex-shrink: 0;
+        min-height: 140px;
     }
     
     .forecast-date {
         font-size: 13px;
+        font-weight: 600;
     }
     
     .forecast-day-name {
         font-size: 12px;
+        opacity: 0.8;
     }
     
     .forecast-icon {
@@ -983,266 +874,331 @@ h2 {
     
     .temp-high {
         font-size: 16px;
+        font-weight: 700;
     }
     
     .temp-low {
         font-size: 13px;
+        opacity: 0.7;
     }
     
     .forecast-description {
         font-size: 10px;
+        line-height: 1.2;
+        opacity: 0.8;
     }
     
-    /* Боковая панель - становится частью основного потока */
+    /* Боковая панель - детали погоды */
     .side-panel {
         order: 3;
+        gap: 12px;
     }
     
-    /* Детали погоды - 2 колонки */
     .weather-details {
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 10px;
     }
     
     .detail-card {
         padding: 14px;
-        gap: 6px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        min-height: 90px;
     }
     
     .detail-label {
         font-size: 12px;
+        gap: 5px;
+    }
+    
+    .detail-label i {
+        font-size: 13px;
     }
     
     .detail-value {
         font-size: 18px;
+        font-weight: 700;
+        margin-top: 4px;
     }
     
     /* Футер с API */
     .api-footer {
         position: relative;
         bottom: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 0 8px;
+        margin: 8px 0 4px;
+        padding: 0 12px;
     }
     
     .api-info {
-        font-size: 12px;
-        padding: 10px 16px;
+        font-size: 11px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: rgba(30, 27, 45, 0.9);
+        width: 100%;
         justify-content: center;
+        gap: 6px;
     }
     
     .api-info span {
         font-size: 11px;
         text-align: center;
+        flex: 1;
     }
 }
 
-/* Маленькие мобильные (до 480px) */
+/* Очень маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
-    body {
-        padding: 6px;
+    .weather-app {
+        padding: 10px;
+        gap: 10px;
     }
     
     .card {
-        padding: 16px;
+        padding: 14px;
         border-radius: 12px;
     }
     
     .app-title h1 {
-        font-size: 22px;
+        font-size: 20px;
     }
     
     .app-subtitle {
-        font-size: 12px;
-    }
-    
-    .search-input {
-        padding: 12px 14px;
-        font-size: 15px;
-    }
-    
-    .btn {
-        padding: 14px;
-        font-size: 14px;
+        font-size: 11px;
     }
     
     .temperature {
-        font-size: 42px;
+        font-size: 40px;
     }
     
     .weather-icon {
-        font-size: 52px;
+        font-size: 50px;
     }
     
-    /* Детали погоды - 1 колонка */
-    .weather-details {
-        grid-template-columns: 1fr;
-        gap: 10px;
+    .weather-description {
+        font-size: 15px;
     }
     
-    /* Прогноз - еще компактнее */
     .forecast-day {
-        min-width: 95px;
-        padding: 12px 8px;
-        gap: 8px;
-    }
-    
-    .forecast-date {
-        font-size: 12px;
+        min-width: 90px;
+        padding: 10px 6px;
+        min-height: 130px;
     }
     
     .forecast-icon {
         font-size: 22px;
-        height: 30px;
     }
     
     .temp-high {
         font-size: 15px;
-    }
-    
-    /* Уведомления/статусы */
-    .status {
-        padding: 10px 12px;
-        font-size: 13px;
-    }
-    
-    /* Переключатель единиц */
-    .unit-toggle {
-        justify-content: center;
-        margin-top: 12px;
-    }
-    
-    .unit-btn {
-        padding: 5px 12px;
-        font-size: 12px;
-    }
-    
-    /* Автодополнение */
-    .autocomplete-item {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-    
-    .autocomplete-region {
-        font-size: 11px;
-    }
-    
-    .api-info span {
-        display: block;
-        font-size: 10px;
-        line-height: 1.3;
-    }
-}
-
-/* Очень маленькие экраны (до 360px) */
-@media (max-width: 360px) {
-    .forecast-day {
-        min-width: 85px;
-        padding: 10px 6px;
-    }
-    
-    .forecast-date {
-        font-size: 11px;
-    }
-    
-    .temp-high {
-        font-size: 14px;
     }
     
     .temp-low {
         font-size: 12px;
     }
     
+    .weather-details {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .detail-card {
+        padding: 12px;
+        min-height: 80px;
+    }
+    
+    .detail-value {
+        font-size: 17px;
+    }
+    
+    .btn {
+        padding: 14px;
+        font-size: 14px;
+        min-height: 46px;
+    }
+    
+    .search-input {
+        padding: 13px 15px;
+        font-size: 15px;
+    }
+}
+
+/* Супер маленькие телефоны (до 360px) */
+@media (max-width: 360px) {
+    .weather-app {
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .card {
+        padding: 12px;
+        border-radius: 10px;
+    }
+    
+    .app-title h1 {
+        font-size: 18px;
+        gap: 8px;
+    }
+    
+    .app-title h1 i {
+        font-size: 18px;
+    }
+    
+    .temperature {
+        font-size: 36px;
+    }
+    
+    .weather-icon {
+        font-size: 46px;
+        height: 60px;
+    }
+    
+    .forecast-day {
+        min-width: 85px;
+        padding: 10px 5px;
+        min-height: 125px;
+        gap: 6px;
+    }
+    
+    .forecast-date {
+        font-size: 12px;
+    }
+    
+    .forecast-day-name {
+        font-size: 11px;
+    }
+    
+    .forecast-icon {
+        font-size: 20px;
+        height: 30px;
+    }
+    
+    .forecast-description {
+        font-size: 9px;
+    }
+    
     .detail-value {
         font-size: 16px;
     }
     
-    .temperature {
-        font-size: 38px;
+    .api-info {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+    
+    .api-info span {
+        font-size: 10px;
     }
 }
 
-/* Пейзажная ориентация на мобильных */
-@media (max-height: 500px) and (orientation: landscape) {
+/* Пейзажная ориентация для телефонов */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
     .weather-app {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        grid-template-rows: auto auto;
+        gap: 10px;
+        padding: 8px;
+    }
+    
+    .main-panel {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        gap: 10px;
+    }
+    
+    .side-panel {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        order: 0;
     }
     
     .current-weather {
         flex-direction: row;
         text-align: left;
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
+    .weather-info {
+        text-align: left;
     }
     
     .weather-meta {
         flex-direction: row;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px;
     }
     
-    .main-panel {
-        grid-column: 1 / 2;
+    .meta-item {
+        justify-content: flex-start;
+        width: auto;
     }
     
-    .side-panel {
-        grid-column: 2 / 3;
-        order: 0;
+    .temperature {
+        font-size: 32px;
+    }
+    
+    .weather-icon {
+        font-size: 40px;
+    }
+    
+    .forecast-container {
+        max-height: 120px;
+    }
+    
+    .forecast-day {
+        min-width: 80px;
+        min-height: 110px;
+        padding: 8px 4px;
+    }
+    
+    .weather-details {
+        grid-template-columns: 1fr;
     }
 }
 
-/* Поддержка темной темы на iOS/Android */
-@media (prefers-color-scheme: dark) {
-    /* Уже темная тема, но можно добавить специфические настройки */
-    .search-input {
-        background: rgba(255, 255, 255, 0.05);
-    }
-    
-    .autocomplete-list {
-        background: rgba(30, 27, 45, 0.98);
-    }
-}
-
-/* Поддержка безопасных зон (iPhone X и новее) */
+/* Безопасные зоны для современных телефонов */
 @supports (padding: max(0px)) {
-    body {
-        padding-left: max(8px, env(safe-area-inset-left));
-        padding-right: max(8px, env(safe-area-inset-right));
-        padding-top: max(8px, env(safe-area-inset-top));
-        padding-bottom: max(8px, env(safe-area-inset-bottom));
+    @media (max-width: 768px) {
+        body {
+            padding-top: max(12px, env(safe-area-inset-top));
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            padding-left: max(12px, env(safe-area-inset-left));
+            padding-right: max(12px, env(safe-area-inset-right));
+        }
+        
+        .weather-app {
+            padding-top: max(8px, env(safe-area-inset-top));
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
+            padding-left: max(8px, env(safe-area-inset-left));
+            padding-right: max(8px, env(safe-area-inset-right));
+        }
+        
+        .api-footer {
+            padding-bottom: max(10px, env(safe-area-inset-bottom));
+        }
     }
 }
 
-/* Улучшение касаний на мобильных */
-@media (max-width: 768px) {
-    button, 
-    .btn, 
-    .unit-btn, 
+/* Улучшение отзывчивости для тач-устройств */
+@media (max-width: 768px) and (pointer: coarse) {
+    .search-input,
+    .btn,
+    .unit-btn,
     .forecast-day,
-    .autocomplete-item {
-        min-height: 44px; /* Минимальный размер для удобного касания */
+    .autocomplete-item,
+    .detail-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+        tap-highlight-color: rgba(139, 92, 246, 0.2);
     }
     
     input, select, textarea {
-        font-size: 16px; /* Предотвращает увеличение в iOS */
-    }
-    
-    /* Убираем hover-эффекты на тач-устройствах */
-    @media (hover: none) and (pointer: coarse) {
-        .card:hover {
-            transform: none;
-        }
-        
-        .btn:hover, .forecast-day:hover {
-            transform: none;
-        }
-        
-        /* Добавляем активные состояния */
-        .btn:active, .forecast-day:active {
-            transform: scale(0.98);
-            opacity: 0.8;
-        }
+        font-size: 16px; /* Предотвращает масштабирование в iOS */
     }
 }
-}
+
 
 
