@@ -6,7 +6,7 @@
     <title>Weatherly | Современный прогноз погоды</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,14 +14,10 @@
         <!-- Основная панель -->
         <div class="main-panel">
             <div class="card">
-                <div class="app-header">
-                    <div class="app-icon">
-                        🌤️
-                    </div>
-                    <div class="app-title">
-                        <h1>Weatherly</h1>
-                        <p class="app-subtitle">Современный прогноз погоды в реальном времени</p>
-                    </div>
+                
+                <div class="app-title">
+                    <h1>Weatherly</h1>
+                    <p class="app-subtitle">Современный прогноз погоды в реальном времени</p>
                 </div>
                 
                 <div class="search-container">
@@ -45,7 +41,7 @@
                 <div class="status info" id="statusMessage">
                     <i class="fas fa-info-circle"></i> Введите название города (по умолчанию — Бишкек)
                 </div>
-            </div>
+            </div> <!-- Закрывающий тег для .card -->
             
             <!-- Блок с текущей погодой -->
             <div class="card">
@@ -87,7 +83,7 @@
                     <!-- Прогноз будет добавляться динамически -->
                 </div>
             </div>
-        </div>
+        </div> <!-- Закрывающий тег для .main-panel -->
         
         <!-- Боковая панель с деталями погоды -->
         <div class="side-panel">
@@ -125,7 +121,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> <!-- Закрывающий тег для .weather-app -->
     
     <!-- Футер с информацией об API -->
     <div class="api-footer">
