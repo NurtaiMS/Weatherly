@@ -413,4 +413,3 @@ document.addEventListener('click', (e) => {
 window.addEventListener('DOMContentLoaded', () => {
     getWeatherByCity('Бишкек');
 });
-
